@@ -1,27 +1,8 @@
-/**
- * Sample response from `/oauth2/v1/device`:
- * {
- *   "device_code": "Ag_EEG_U-x5FGsQshfpzko1p",
- *   "user_code": "QTZL-MCBW",
- *   "verification_uri": "https://fadydev.auth0.com/ui/v1/device",
- *   "expires_in": 900
- * }
- */
-
-/*
-https://idcs-i68t1wl5ao2jar2yuwlh9jakzg0vec.identity.preprod.oraclecloud.com/oauth2/v1/authorize?client_id=83743ee4572e4b0d86fe3fe6c29f506e&response_type=code&redirect_uri=%2Fui%2Fv1%2Fmyconsole&scope=openid&state=1234
-
-https://playground.identity.internal.oracle.com:8943/oauth2/v1/authorize?client_id=345637e117254f27aff562b26d9ba11d&response_type=code&redirect_uri=%2Fui%2Fv1%2Fmyconsole&scope=openid&state=1234
-*/
 function requestAuthorization() {
   const config = getConfig()
   let body = {
     client_id: config.clientId
   }
-
-  // if (config.audience) {
-  //   body.audience = config.audience
-  // }
 
   if (config.scopes.length) {
     body.scope = config.scopes.join(' ')

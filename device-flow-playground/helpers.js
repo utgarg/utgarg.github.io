@@ -6,7 +6,7 @@ function renderStep(step, options) {
       name: 'configure',
       title: 'Device Flow Playground',
       description:
-        'Configure the playground with your device application, Auth0 tenant, and scopes.'
+        'Configure the playground with your device application, OCI tenancy, and scopes.'
     },
     {
       name: 'authorize',
@@ -207,7 +207,6 @@ function generateCurlRequest(endpoint, method, headers, data) {
 function getConfig() {
   const tenant = document.getElementById('tenant-input').value
   const clientId = document.getElementById('client-id-input').value
-  const audience = document.getElementById('audience-input').value
   let scopes = []
 
   document
@@ -217,7 +216,6 @@ function getConfig() {
   return {
     tenant,
     clientId,
-    audience,
     scopes
   }
 }
