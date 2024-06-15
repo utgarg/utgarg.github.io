@@ -75,7 +75,7 @@ class StepOne extends React.Component {
   }
 
   render() {
-    this.completeURL = this.props.authEndpoint + '?client_id=' + this.props.clientID + '&redirect_uri=http://localhost:3000/callback' +'&scope=' + encodeURI(this.props.scopes) + '&response_type=code&state=' + this.props.stateToken;
+    this.completeURL = this.props.authEndpoint + '?client_id=' + this.props.clientID + '&redirect_uri=http://localhost:5000/callback' +'&scope=' + encodeURI(this.props.scopes) + '&response_type=code&state=' + this.props.stateToken;
 
     if(this.props.audience && this.props.audience !== "") {
       this.completeURL += `&audience=${this.props.audience}`;
@@ -98,7 +98,7 @@ class StepOne extends React.Component {
                   client_id=
                   <a onClick={() => { this.props.openModal(true, 'clientID') }} href="#">{this.props.clientID}</a>
                   <br />
-                  &amp;redirect_uri=http://localhost:3000/callback
+                  &amp;redirect_uri=http://localhost:5000/callback
                   <br />
                   &amp;scope=
                   <a onClick={() => { this.props.openModal(true, 'scopes') }} href="#">{this.props.scopes}</a>
