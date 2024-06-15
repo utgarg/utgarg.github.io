@@ -20,7 +20,7 @@ class Hero extends React.Component {
   render() {
     return (
       <header className="main-header">
-        <nav
+        {/* <nav
           className={`main-navigation ${
             this.state.navMobileOpen ? "mobile-open" : ""
           }`}
@@ -98,7 +98,7 @@ class Hero extends React.Component {
               OpenID Connect works.
             </h2>
           </div>
-        </section>
+        </section> */}
       </header>
     );
   }

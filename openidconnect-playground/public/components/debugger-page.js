@@ -268,7 +268,7 @@ class DebuggerPage extends React.Component {
   render() {
     return (
       <div>
-        <section className="gc-banner__wrapper">
+        {/* <section className="gc-banner__wrapper">
           <h2 className="gc-banner__main-header">
             Get the OIDC Handbook for free!
           </h2>
@@ -281,7 +281,7 @@ class DebuggerPage extends React.Component {
           >
             {'DOWNLOAD EBOOK'}
           </a>
-        </section>
+        </section> */}
         <main className="playground">
           <div className="container">
             <div className="playground-header">

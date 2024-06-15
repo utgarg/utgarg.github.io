@@ -8,7 +8,7 @@ class OpenIDPage extends React.Component {
       <div className="openid-page">
         <Hero mobileNavigationOpen={this.mobileNavigationOpen} />
         { this.props.children }
-        <Footer />
+        {/* <Footer /> */}
       </div>
     );
   }
