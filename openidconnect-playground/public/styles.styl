@@ -1,0 +1,959 @@
+@import '../node_modules/@auth0/styleguide-core/src/vars/index'
+@import '../node_modules/@auth0/styleguide-core/src/mixins/index'
+
+
+
+
+orange-color = #F8931D
+main-background-color = #F9F9F9
+main-color = orange-color
+font-family-serif = system, -apple-system, BlinkMacSystemFont, "Helvetica", "Arial", sans-serif !important
+
+body
+  font-family font-family-serif
+
+button
+  outline none
+
+// Header styles
+.main-header
+  background-color main-background-color
+  width: 100%
+
+  .main-navigation
+    border-bottom 1px solid rgba(black, 0.05)
+    text-align center
+
+    > .container
+      width 100%
+      max-width 1200px
+      position relative
+      height 80px
+
+      +breakpoint("tablet")
+        height 115px
+
+    &.mobile-open
+      +breakpoint("tablet", "max")
+        position fixed
+        height 100vh
+        width 100vw
+        z-index 99
+        background-color main-background-color
+
+        > .container
+          border-bottom 1px solid rgba(0,0,0,0.05)
+
+        .mobile-navigation
+          display block
+
+        .trigger-nav
+          .bar:nth-child(1)
+            transform translate(0, 7px) rotate(-45deg)
+
+          .bar:nth-child(2)
+            opacity 0
+
+          .bar:nth-child(3)
+            transform translate(0, -7px) rotate(45deg)
+
+  .openid-logo
+    width 135px
+    height 42px
+    background-image url('./images/openid-logo.svg')
+    display inline-block
+    position absolute
+    left 15px
+    top 50%
+    transform translateY(-50%)
+
+    // Hide logo text
+    > .logo-text
+      color rgba(black, 0)
+      font-size 0
+
+  .navigation
+    display inline-block
+    list-style none
+    padding 0
+    margin 0
+    white-space nowrap
+
+    +breakpoint("tablet", "max")
+      display none
+
+    +breakpoint("tablet")
+      position absolute
+      left 50%
+      top 50%
+      transform translate(-50%, -50%)
+
+    .navigation-item
+      display inline-block
+      font-size 14px
+      margin-right 12px
+
+      +breakpoint("tablet")
+        margin-right 20px
+
+      &.is-disabled
+        opacity: 0.2;
+        pointer-events: none;
+
+      > a
+        color black
+        padding 10px
+
+      &:last-child
+        margin-right 0
+
+  .social-icons
+    display none
+    a
+      color: rgba(0,0,0,0.54)
+
+      .crafted-by__question-mark
+        transition color .5s, background-color .5s
+        margin-left 8px
+        border-radius 50%
+        width 18px
+        height 18px
+        display inline-block
+        background-color #e3e3e3
+        color #aeb0b3
+        line-height 18px
+        vertical-align top
+      &:before
+        -webkit-backface-visibility hidden
+        content "Learn more about Auth0"
+        position absolute
+        top 28px
+        right 0
+        border-radius 3px
+        padding 8px 0px
+        font-size 14px
+        line-height 14px
+        min-width 170px
+        background-color #555
+        color white
+        transition visibility 0s, opacity .5s
+        visibility hidden
+        opacity 0
+      &:hover
+        .crafted-by__question-mark
+          background-color #ccc
+          color #888889
+        &:before
+          opacity 1
+          visibility visible
+
+    +breakpoint("tablet")
+      display block
+      position absolute
+      right 15px
+      top 50%
+      transform translateY(-50%)
+      line-height 0
+
+    .crafted
+      position: relative;
+      top: -9px;
+      right: 7px;
+
+    .twitter-icon
+      display inline-block
+      width 26px
+      height 26px
+      background-image url('./images/twitter-badge.svg')
+      margin-left 10px
+
+  // Mobile navigation trigger
+  .trigger-nav
+    display inline-block
+    position absolute
+    right 0
+    top 50%
+    transform translateY(-50%)
+    cursor pointer
+    padding 15px
+
+    +breakpoint("tablet")
+      display none
+
+    > .bar
+      width 22px
+      height 2px
+      background-color black
+      transition all 0.3s ease-in-out
+
+    > .bar + .bar
+      margin-top 5px
+
+  .mobile-navigation
+    display none
+    height calc(100% - 80px)
+    position relative
+
+  .mobile-nav-list
+    list-style-type none
+    padding 0
+    margin 0
+    position absolute
+    top calc(50% - 30px)
+    left 50%
+    transform translate(-50%, -50%)
+
+  .mobile-nav-item
+    font-size 30px
+    white-space nowrap
+    margin 10px 0
+
+    > a
+      color $color-text-light
+
+  .mobile-crafted-by
+    position absolute
+    bottom 0
+    left 0
+    right 0
+    width 100%
+    height 60px
+    line-height 60px
+    border-top 1px solid rgba(black, 0.05)
+
+    > a
+      color $color-text-light
+
+    svg
+      position relative
+      top 8px
+      margin-left 10px
+
+
+  .hero
+    text-align center
+    padding 55px 0
+
+    .hero-title
+      margin 0
+      margin-bottom 25px
+      font-size 32px
+      color main-color
+
+    .hero-subtitle
+      max-width 700px
+      margin 0 auto
+      font-size 16px
+      line-height 2
+      color $color-text-light
+
+// end header styles
+
+// Generic Styles
+
+.json-result
+  white-space: pre;
+
+.code-box-btn
+  display block
+  font-size 12px
+  text-transform uppercase
+  padding 15px 20px
+  border-radius 3px
+  color $bg-color-dark
+  border 0
+  background-color white
+  letter-spacing 1px
+
+  &:hover
+    background-color darken(white, 4%)
+
+  &.is-alt
+    border 1px solid #333
+  
+  &.is-subtle
+    background #f3f3f3
+    border 1px solid #f3f3f3
+
+  &.is-error
+    background #D0021B
+    color white
+
+    &:hover
+      background-color darken(#D0021B, 4%)
+
+.code-box-btn-group
+  display flex
+  justify-content: center;
+
+  .code-box-btn 
+    display inline-block
+    margin 0 5px !important
+    
+// Playground styles
+
+.playground
+
+  .mode-switcher
+    +breakpoint("tablet", "max")
+      display block
+
+    +breakpoint("tablet")
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 0;
+
+    .form-control
+      width: 225px;
+      display: inline-block;
+      margin-left: 10px;
+      font-size: 14px;
+      height: 38px;
+
+
+  .playground-header
+    position relative
+    margin-top 20px
+    padding 25px 0
+    border-bottom 1px solid rgba(black, 0.10)
+    text-align center
+
+  .playground-header-title
+    font-size 26px
+    line-height 39px
+    margin 0
+
+    +breakpoint("tablet", "max")
+      text-align center
+      margin-bottom 35px
+
+    +breakpoint("tablet")
+      display inline-block
+
+  .playground-header-config
+    font-size 12px
+    text-transform uppercase
+    vertical-align middle
+    background-color transparent
+    border none
+
+    +breakpoint("tablet", "max")
+      margin-top 15px
+
+    +breakpoint("tablet")
+      line-height 39px
+      position absolute
+      top 50%
+      right -16px
+      transform translateY(-50%)
+
+    > i
+      margin-right: 5px;
+      font-size: 16px;
+      position: relative;
+      top: 4px;
+
+  .playground-content
+    width 600px
+    max-width 100%
+    margin 40px auto 0 auto
+
+    &.skip-tutorial .playground-step:before
+      transition none
+
+    pre
+      background-color #222228 !important
+      color #FFF !important
+
+
+  .playground-step
+    position relative
+    padding-bottom 55px
+
+    +breakpoint("tablet")
+      left (-65px / 2)
+
+    &.active .step-number
+      color white
+      background-color main-color
+
+    &.last-step
+
+      .step-number
+        color white
+        background-color #7ED321
+        border-color #7ED321
+        line-height 44px
+
+    &.last-step.is-invalid
+      .step-number
+        background-color #D0021B
+        border-color #D0021B
+
+      &:before
+        display none !important
+
+    &:before
+      content ''
+      display inline-block
+      height 100%
+      width 1px
+      background-color main-color
+      position absolute
+      left 20px
+      top 0
+      transition all 1s
+
+      +breakpoint("tablet", "max")
+        display none
+
+    &.active:before
+      height 0%
+
+    .step-number
+      display inline-block
+      width 40px
+      height 40px
+      border-radius 50%
+      border 2px solid main-color
+      background-color white
+      text-align center
+      line-height 40px
+      font-size 18px
+      color main-color
+      transition all 1s
+
+      +breakpoint("tablet", "max")
+        margin-bottom 15px
+        margin-right 15px
+
+      +breakpoint("tablet")
+        position absolute
+        top 0
+        left 0
+
+    p
+      margin-bottom 20px
+
+    .step-content
+
+      +breakpoint("tablet", "max")
+        display inline
+
+      +breakpoint("tablet")
+        padding-left 65px
+
+    .step-title
+      font-size 24px
+      line-height 40px
+      margin 0
+      margin-bottom 20px
+      text-align left
+
+      +breakpoint("tablet", "max")
+        display inline-block
+
+    .step-spinner-container
+      text-align center
+      padding 7px 0
+
+      .step-spinner
+        display inline-block
+        margin 0
+        vertical-align middle
+
+
+    .snippet-description
+      font-family Menlo, Monaco, monospace
+      margin-bottom 5px
+      color main-color
+
+    .code-snippet
+      font-family Menlo, Monaco, monospace
+      display block
+      position relative
+      width 100%
+      border-radius 3px
+      color white
+      background-color $bg-color-dark
+      padding 10px 20px
+      margin-bottom 14px
+      overflow-x auto
+
+      &.light-version
+        background-color transparent
+        border 1px solid #9B9B9B
+        color black
+        padding 0
+        padding-right 50px
+
+      .snippet
+        display block
+        width 100%
+        height 100%
+        overflow-x auto
+        padding 10px 20px
+
+      .btn-copy
+        position absolute
+        top 0
+        bottom 0
+        right 0
+        width 50px
+        line-height 50px
+        overflow hidden
+        background-color white
+        border none
+        color #0094C1
+        border-left 1px solid #9B9B9B
+
+        &:focus
+          outline none
+
+    .skip-tutorial
+      display block
+      margin 0 auto
+      font-size 12px
+      text-transform uppercase
+      letter-spacing 1px
+      margin 40px auto 20px auto
+
+      +breakpoint("tablet")
+        position relative
+        left 32.5px
+
+    .btn-view-jwt
+      float right
+      position relative
+      border none
+      bottom 6px
+      margin-bottom 8px
+      border-radius 50px
+      padding 8px 10px
+      padding-left 38px
+      font-size 12px
+      font-weight bold
+      text-transform uppercase
+      background-color black
+      color white
+      background-image url('./images/jwt-badge.svg')
+      background-position 10px center
+      background-repeat no-repeat
+      background-size 19px 19px
+
+
+    // Code box styles
+
+    .code-box-title
+      border 1px solid $bg-color-dark
+      border-bottom 0
+      font-size 18px
+      padding-left 20px
+      line-height 65px
+      border-radius 3px 3px 0 0
+      margin 0
+
+    .code-box-content
+      background-color $bg-color-dark
+      color white
+      border-top none
+      border-radius 0 0 3px 3px
+      padding 25px 20px
+      overflow-x auto
+
+      ::-webkit-scrollbar
+        width: 5px;
+        height: 10px;
+
+      ::-webkit-scrollbar-track
+        background: transparent;
+        border-radius: 4px;
+
+      ::-webkit-scrollbar-thumb
+        border-radius: 4px;
+        border: 3px solid transparent;
+        border-left: 0;
+        border-right: 0;
+        background:transparent;
+
+      &:hover ::-webkit-scrollbar-thumb
+          border-color: #222228;
+          background:rgba(255,255,255,0.1);
+
+    .code-block
+      font-family Menlo, Monaco, monospace
+      font-size 14px
+      padding-right 20px
+      margin-bottom 15px
+      overflow-x: scroll;
+
+      a
+        color: $color-blue-light
+
+        &:hover:after
+          content: "Edit"
+          font-family: font-family-serif
+          text-transform: uppercase
+          letter-spacing: 1px
+          font-size: 12px
+          padding-left: 15px
+          color: white
+
+    .code-block-url-params
+      padding-left: 30px
+
+    hr
+      border-top 1px solid rgba(white, 0.10)
+      margin 20px 0
+
+    .code-box-btn
+      margin 0 auto
+
+    // end code box styles
+
+// end playground styles
+
+
+
+// Footer styles
+
+.main-footer
+  text-align center
+  background-color main-background-color
+  font-size 15px
+  color $color-text-light
+  padding 30px 0
+
+  .main-footer-container
+    display flex
+    flex-direction column
+    justify-content center
+    margin 0 auto
+    width 100%
+    max-width 1200px
+    padding 0 16px
+
+    .privacy-links-container
+      a + a 
+        &:before
+          content "•"
+          display inline-block
+          padding 0 8px
+          pointer-events none
+          color #222228
+      a:hover
+        &:before
+          color #222228 
+
+      .as-anchor
+        &:before
+          content "•"
+          display inline-block
+          padding 0 8px
+          pointer-events none
+          color #222228
+        background: none
+        padding: 0
+        color #0a84ae
+        border: none
+        cursor: pointer
+        &:hover
+          &:before
+            color #222228
+
+      .ccpa-toggle
+        max-width: 39px
+        margin-left: 5px
+        vertical-align: middle
+        border: none
+        display: inline
+
+  .auth0-badge
+    display inline-block
+    width 118px
+    height 25px
+    background-image url('./images/auth0-badge.svg')
+    background-repeat no-repeat
+    vertical-align middle
+    margin-left 10px
+    margin-right 10px
+
+#ccpa-modal
+  display: none
+  position: fixed
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  width: 50%
+  max-width: 670px;
+  height: auto
+  background: white
+  z-index: 10000
+  color: black
+  border-radius: 16px
+  padding: 24px
+  text-align: left
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2)
+  border: 1px solid #e3e5e7
+
+  +breakpoint("tablet", "max")
+    width: 90%;
+
+  .title
+    color: black
+    font-weight: 500
+    line-height: 1.1
+    margin: 20px 0 10px 0
+    font-size: 24px
+
+  .paragraph
+    margin: 30px 0 30px 0
+
+  #close-ccpa
+    background: none
+    border: none
+    padding: 0
+    position: absolute
+    top: 20px
+    right: 30px
+    font-size: 24px
+    line-height: 24px
+
+  .settings
+    color: #635dff
+    appearance: none
+    border: none
+    background: none
+    padding: 0
+
+// end footer styles
+
+
+// Configuration modal styles
+
+body.overflow-hidden
+  overflow hidden
+
+.configuration-modal
+  position fixed
+  top 0
+  right 0
+  bottom 0
+  left 0
+  z-index 1000
+  overflow-y auto
+  pointer-events auto
+
+  .configuration-modal-dialog
+    padding 25px
+    background-color white
+    max-width 1000px
+    overflow hidden
+    transform none
+    opacity 1
+
+    +breakpoint("tablet", "max")
+      position absolute
+      padding-top 30px
+      top 0
+      left 0
+      right 0
+
+    +breakpoint("tablet")
+      position relative
+      margin 40px auto
+      border-radius 3px
+      box-shadow 0 0 0 9999px rgba(0,0,0,0.5)
+
+
+  .configuration-modal-close
+    position absolute
+    cursor pointer
+    top 32px
+    right 30px
+    font-size 24px
+    line-height 1
+
+    &:hover,
+    &:focus
+      color rgba(black, 0.5)
+
+  .configuration-modal-title
+    font-size 26px
+    text-align center
+    margin 0 0 30px 0
+
+  .form-control
+    box-shadow none
+    color $color-text-black
+    height 44px
+
+    &:focus
+      box-shadow none
+      border-color black
+
+  .control-label
+    text-align left !important
+    color $color-text-light
+
+  .input-with-button
+    width 100%
+    border-right 0
+    border-top-right-radius 0
+    border-bottom-right-radius 0
+    float right
+
+  .button-float-right
+    border-top-left-radius 0
+    border-bottom-left-radius 0
+    border-left 0
+    height 44px
+    float right
+    font-size 12px
+
+  .clear-storage-container
+    background-color #222228
+    border-radius 3px
+    color white
+    padding 15px
+    font-size 13px
+    position relative
+
+    +breakpoint("tablet", "max")
+      padding-bottom 20px
+
+    > p
+      margin 0
+      padding 0 20px
+      margin-bottom 20px
+      font-size 13px
+
+      +breakpoint("tablet")
+        padding-right 260px
+        margin-bottom 0
+
+    > .clear-storage-btn
+      background-color white
+      border none
+      border-radius 3px
+      letter-spacing 1px
+      color #222228
+      text-transform uppercase
+      font-size 12px
+      padding 10px 20px
+      width 240px
+
+      +breakpoint("tablet", "max")
+        display block
+        margin 0 auto
+
+      +breakpoint("tablet")
+        right 20px
+        position absolute
+        top 50%
+        transform translateY(-50%)
+
+
+// end configuration modal styles
+
+// callout styles
+
+.bottom-callout.theme-dark
+  background: $bg-color-dark
+  padding: 40px 30px
+
+  img,
+  .btn
+    margin: 20px 0
+
+  p
+    font-size: $font-size-large
+    color: $color-text-contrast-light
+    font-weight: $font-weight-bold
+    line-height: normal
+
+// end callout styles
+
+// introduction page styles
+
+.introduction-page
+  padding-top 30px
+
+  .introduction-container
+    max-width 580px
+    margin 0 auto
+    padding 0 15px
+
+  .introduction-section
+    margin-bottom 60px
+
+  .section-title
+    font-size 26px
+
+  p
+    font-size 16px
+    color $color-text-light
+
+  ul
+    font-size 16px
+    padding-left 20px
+    margin 0
+
+// end introduction page styles
+
+// gated content styles
+.gc-banner__wrapper
+  max-width 986px
+  margin 66px auto 0 auto
+  padding 48px 146px 0
+  border 1px solid #E3E5E7
+  border-radius 3px
+  box-shadow 0 40px 21px -35px #d5d5d5
+  background #F9F9F9
+  background-image url('./images/oidc-handbook-gc-ipad.png')
+  background-repeat no-repeat
+  background-position right bottom -32px
+  background-size 420px
+  .gc-banner__main-header
+    margin 0
+    font-size 20px
+    line-height 32px
+    color orange-color
+    text-align left
+  .gc-banner__sub-header
+    font-size 18px
+    line-height 30px
+    text-align left
+    margin 14px 0 0 0
+  .gc-banner__cta
+    min-width: 208px
+    margin 26px 0 50px
+    background-color #F8931D
+    &:hover
+      background-color #eb5424
+
+  @media screen and (max-width: 768px)
+    margin-left 24px
+    margin-right 24px
+    padding 48px 40px
+    background-position center bottom -40px
+    text-align center
+    .gc-banner__main-header, .gc-banner__sub-header
+      word-break keep-all
+      text-align center
+    .gc-banner__cta
+      width 100%
+      margin-bottom 116px
+
+.small 
+  font-size: 12px;
+
+#teconsent {
+  position fixed !important
+  left 10px
+  bottom 0 !important
+  padding 10px
+  background #f2f2f2
+  border-radius 5px 5px 0 0
+}

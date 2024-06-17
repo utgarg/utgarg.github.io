@@ -3,5 +3,5 @@
 To run the playground locally, simply serve the root directory:
 
 ```sh
-npx serve
+PORT=5000 npx serve
 ```
